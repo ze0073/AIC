@@ -1,0 +1,106 @@
+/* Original local imagery: dark art is separated from readable card content. */
+.app-shell .home-hero { isolation: isolate; background: #141b16; min-height: 480px; }
+.home-hero-background {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center 45%; z-index: -2; pointer-events: none;
+}
+.app-shell .home-hero::before {
+  inset: 0; z-index: -1; mask-image: none;
+  background: linear-gradient(90deg, #111a16f5 0%, #111a16e0 32%, #111a1666 59%, #111a1608 100%),
+    linear-gradient(0deg, #111a16ad, transparent 38%);
+}
+.app-shell .home-hero::after { display: none; }
+.app-shell .home-hero-copy { max-width: 580px; }
+.app-shell .home-hero-copy > div.ant-typography { color: #d0d8c8 !important; }
+.app-shell .home-hero-visual { align-self: stretch; align-items: stretch; display: flex; flex-direction: column; justify-content: space-between; }
+.app-shell .visual-topline { color: #e4eadb; text-shadow: 0 1px 8px #000; }
+.app-shell .visual-topline > span:last-child { color: #d0d9bd; }
+.hero-artwork-window { flex: 1; min-height: 240px; position: relative; pointer-events: none; }
+.hero-artwork-window > span {
+  position: absolute; bottom: 25px; right: 0;
+  border-right: 2px solid var(--acid); padding: 8px 12px;
+  font: 9px/1.6 Consolas, monospace; letter-spacing: 2px; color: #e1e8d2; white-space: nowrap;
+  background: #151e188c; backdrop-filter: blur(8px);
+}
+.app-shell .visual-step-list {
+  background: #131c17c9; border: 1px solid #c9d8b52b; border-radius: 10px;
+  padding: 0 12px; backdrop-filter: blur(10px);
+}
+.app-shell .visual-step-list > div { padding: 14px 5px; border: 0; }
+.app-shell .visual-step-list b { color: #e1e8d2; }
+
+/* The login panel retains a dark tint while letting the environment show through. */
+.login-background {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: 62% center; z-index: -3; pointer-events: none;
+}
+.industrial-login.login-shell:has(.account-intro) { background: #141b16; }
+.industrial-login::before {
+  z-index: -2;
+  background: linear-gradient(90deg, #111a16f0, #111a169e 47%, #111a1645),
+    linear-gradient(0deg, #111a16f0, transparent 40%, #111a163d);
+}
+.industrial-login::after { opacity: .45; }
+.industrial-login .login-topbar { background: #111a164d; }
+.industrial-login .account-intro p { color: #c0cab7; }
+.industrial-login .scene-caption { color: #b7c4a8; }
+.industrial-login.login-shell .login-card {
+  background: linear-gradient(145deg, #2933238c, #1a241ba3);
+  border-color: #d5e5bd40;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+.industrial-login .capability-tabs > button { background: #172219d9; }
+.industrial-login .capability-tabs > button.active { background: #28351ae8; }
+.industrial-login .login-footer { color: #adb99e; background: #111a1680; }
+
+/* Card covers load only when needed; image zoom stays inside the cover. */
+.card-artwork { position: relative; height: 112px; overflow: hidden; background: #1a241e; border-radius: 15px 15px 0 0; pointer-events: none; }
+.card-artwork img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 48%; transition: transform .65s cubic-bezier(.22,1,.36,1); }
+.card-artwork::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #14201c33, transparent), linear-gradient(0deg, #14201c44, transparent 50%); pointer-events: none; }
+.app-shell .ant-card-cover { overflow: hidden; border-radius: 15px 15px 0 0; }
+.app-shell .project-card > .ant-card-body { height: auto; }
+.app-shell .hosting-site-card { overflow: hidden; }
+.app-shell :is(.project-card, .hosting-site-card) > .ant-card-body { background: #ffffffd9; border-radius: 0 0 15px 15px; }
+
+/* Other workspace banners use quiet crops of the same image family. */
+.app-shell :is(.agent-landing, .assistant-hero, .quality-agent-banner) {
+  background: linear-gradient(90deg, #151e18f5 0%, #151e18e8 40%, #151e1859 100%), url('/images/glass-core.webp') right center / cover;
+}
+.app-shell .hosting-home-entry {
+  background: linear-gradient(90deg, #edf3e2f5, #edf3e2eb 60%, #edf3e2b5), url('/images/testing-corridor.webp') right 48% / cover;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .app-shell :is(.project-card, .hosting-site-card):hover .card-artwork img { transform: scale(1.055); }
+}
+@media (max-width: 850px) {
+  .app-shell .home-hero::before { background: linear-gradient(90deg, #111a16eb, #111a1691), linear-gradient(0deg, #111a16bf, transparent); }
+  .app-shell .home-hero-visual { display: flex; align-items: stretch; }
+  .hero-artwork-window { min-height: 180px; }
+  .hero-artwork-window > span { bottom: 20px; }
+  .app-shell .visual-step-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .app-shell .visual-step-list small { display: none; }
+}
+@media (max-width: 650px) {
+  .app-shell .home-hero { min-height: 0; }
+  .home-hero-background { object-position: 70% center; }
+  .hero-artwork-window { min-height: 155px; }
+  .app-shell .home-hero-visual { gap: 12px; }
+  .app-shell .visual-step-list { padding-inline: 9px; }
+  .app-shell .visual-step-list b { font-size: 10px; }
+  .login-background { object-position: 72% center; }
+  .industrial-login::before { background: linear-gradient(0deg, #111a16eb, #111a168c 65%, #111a16cb); }
+  .card-artwork { height: 104px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-artwork img { transition: none; }
+  .app-shell :is(.project-card, .hosting-site-card):hover .card-artwork img { transform: none; }
+}
+@media (forced-colors: active) {
+  .home-hero-background, .login-background, .card-artwork { display: none; }
+  .app-shell .home-hero::before, .industrial-login::before { background: none; }
+  .app-shell :is(.home-hero, .agent-landing, .assistant-hero, .quality-agent-banner, .hosting-home-entry),
+  .industrial-login.login-shell:has(.account-intro) { background: Canvas; }
+  .industrial-login.login-shell .login-card { background: Canvas; -webkit-backdrop-filter: none; backdrop-filter: none; }
+}

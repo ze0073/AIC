@@ -1,0 +1,59 @@
+/* Original webpage inspection artwork and lettering for the workbench ribbon. */
+.workspace-accent {
+  position: fixed; inset: 0 auto 0 0; z-index: 5; width: 64px;
+  color: #20241c; background: #f2f532; border-right: 1px solid #20241c1a;
+  pointer-events: none; user-select: none;
+}
+.workspace-accent[data-side="right"] { inset: 0 0 0 auto; border-right: 0; border-left: 1px solid #20241c1a; }
+.workspace-accent[data-rail-entering="true"] { will-change: clip-path; }
+.workspace-accent-art { position: absolute; top: 132px; left: 5px; width: 54px; height: auto; }
+.workspace-accent-name {
+  position: absolute; top: 274px; left: 20px; writing-mode: vertical-rl;
+  font: 700 23px/1 Consolas, monospace; letter-spacing: 3px;
+}
+.workspace-accent-caption {
+  position: absolute; bottom: 160px; left: 25px; writing-mode: vertical-rl;
+  font-size: 12px; letter-spacing: 5px;
+}
+.workspace-accent-mark {
+  position: absolute; bottom: 30px; left: 28px; width: 8px; height: 48px;
+  background: linear-gradient(currentColor, currentColor) center / 1px 36px no-repeat;
+}
+.workspace-accent-mark::before {
+  content: ""; position: absolute; top: 4px; left: 1px; width: 6px; height: 6px;
+  border-radius: 50%; background: currentColor; box-shadow: 0 17px currentColor, 0 34px currentColor;
+}
+.app-shell[data-rail-side] .content {
+  width: min(1360px, calc(100% - 112px));
+}
+.app-shell[data-rail-side="left"] .content { margin-left: max(88px, calc((100% - 1360px) / 2)); margin-right: auto; }
+.app-shell[data-rail-side="right"] .content { margin-right: max(88px, calc((100% - 1360px) / 2)); margin-left: auto; }
+.app-shell[data-rail-side="right"] .guide-launcher.ant-btn { right: 88px; }
+.app-shell[data-rail-side] .guide-launcher.ant-btn { transition-property: background-color, color, border-color, box-shadow; }
+@media (max-width: 1100px) {
+  .workspace-accent { width: 40px; }
+  .workspace-accent-art { left: 3px; width: 34px; }
+  .workspace-accent-name { top: 235px; left: 10px; font-size: 20px; letter-spacing: 2px; }
+  .workspace-accent-caption { left: 13px; font-size: 11px; }
+  .workspace-accent-mark { left: 16px; }
+  .app-shell[data-rail-side] .content { width: calc(100% - 80px); }
+  .app-shell[data-rail-side="left"] .content { margin-left: 64px; margin-right: auto; }
+  .app-shell[data-rail-side="right"] .content { margin-right: 64px; margin-left: auto; }
+  .app-shell[data-rail-side="right"] .guide-launcher.ant-btn { right: 64px; }
+}
+@media (max-height: 650px) {
+  .workspace-accent-caption { display: none; }
+  .workspace-accent-name { top: 235px; font-size: 20px; letter-spacing: 2px; }
+}
+@media (max-width: 760px) {
+  .workspace-accent { width: 8px; border: 0; }
+  .workspace-accent > * { display: none; }
+  .app-shell[data-rail-side] .content { width: calc(100% - 36px); }
+  .app-shell[data-rail-side="left"] .content { margin-left: 22px; margin-right: auto; }
+  .app-shell[data-rail-side="right"] .content { margin-right: 22px; margin-left: auto; }
+  .app-shell[data-rail-side="right"] .guide-launcher.ant-btn { right: 22px; }
+}
+@media (forced-colors: active) {
+  .workspace-accent { background: Canvas; border-right: 1px solid CanvasText; }
+  .workspace-accent > * { display: none; }
+}

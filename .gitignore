@@ -1,0 +1,36 @@
+.idea/
+.vscode/
+.env
+.runtime/
+data/
+backend/target/
+backend/target-stability/
+frontend/node_modules/
+frontend/dist/
+frontend/*.tsbuildinfo
+frontend/vite.config.js
+frontend/vite.config.d.ts
+playwright/.cache/
+.playwright-cli/
+output/
+*.log
+
+# Local configuration and credentials
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Generated files and local test data
+**/node_modules/
+**/target/
+backend/target-*/
+backend/data/
+backend/tmp/
+data-test/
+tmp/
+**/__pycache__/
+*.pyc
+
+# Generated submission packages and local backups
+/提交材料/

@@ -1,0 +1,82 @@
+/* Light layers stay behind content and cannot intercept a click. */
+.motion-light {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  opacity: 0;
+  background: radial-gradient(280px circle at var(--motion-x, 50%) var(--motion-y, 50%), rgba(var(--card-rgb, 115, 136, 46), .12), transparent 75%);
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+[data-motion-hover] > .motion-light { opacity: 1; }
+.motion-sweep {
+  position: absolute;
+  top: -30%;
+  left: -50%;
+  width: 45%;
+  height: 160%;
+  background: linear-gradient(90deg, transparent, #ffffff80, transparent);
+  transform: translateX(-160%) skewX(-18deg);
+  pointer-events: none;
+}
+[data-motion-hover] > .motion-light > .motion-sweep { animation: card-light-pass .85s ease-out both; }
+@keyframes card-light-pass {
+  from { transform: translateX(-160%) skewX(-18deg); }
+  to { transform: translateX(440%) skewX(-18deg); }
+}
+.app-shell :is(.recent-run, .home-overview > div) > :not(.motion-light),
+.industrial-login .capability-tabs > button > :not(.motion-light) { position: relative; z-index: 1; }
+.industrial-login .capability-tabs > button { position: relative; isolation: isolate; }
+.industrial-login .login-card > .motion-light { background: radial-gradient(230px circle at var(--motion-x, 50%) var(--motion-y, 50%), #dcef4a13, transparent 75%); }
+.industrial-login .login-card .motion-sweep { background: linear-gradient(90deg, transparent, #dcef4a10, transparent); }
+.industrial-login .login-card > .ant-card-body { position: relative; z-index: 1; }
+
+@media (hover: hover) and (pointer: fine) {
+  .app-shell [data-motion-tilt] { transition: transform .35s ease, border-color .22s ease, box-shadow .22s ease; }
+  .app-shell [data-motion-tilt][data-motion-hover] {
+    transform: perspective(950px) translateY(-5px) rotateX(var(--motion-rx, 0deg)) rotateY(var(--motion-ry, 0deg));
+    transition-duration: .12s, .22s, .22s;
+    will-change: transform;
+  }
+  .app-shell [data-motion-tilt][data-motion-hover]:focus-within { transform: translateY(-3px); }
+  :is(.app-shell, .industrial-login) .ant-btn:not(:disabled):not(.ant-btn-loading):active { transform: translateY(1px) scale(.98); }
+  :is(.app-shell, .industrial-login) .ant-btn .anticon-arrow-right { transition: transform .2s ease; }
+  :is(.app-shell, .industrial-login) .ant-btn:hover .anticon-arrow-right { transform: translateX(3px); }
+  .app-shell .ant-card[data-motion-hover]::after { opacity: 1; }
+}
+
+.app-shell .topnav a.active::after { transform-origin: left; animation: nav-underline .32s ease-out both; }
+@keyframes nav-underline { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.live-dot, .visual-signal { animation: signal-breathe 3s ease-in-out infinite; }
+@keyframes signal-breathe { 0%, 100% { opacity: 1; box-shadow: 0 0 0 3px #dcef4a0c; } 50% { opacity: .65; box-shadow: 0 0 0 6px #dcef4a08; } }
+.visual-topline { position: relative; padding-bottom: 12px; overflow: hidden; }
+.visual-topline::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #dcef4a7a, transparent);
+  pointer-events: none;
+  animation: signal-travel 10s linear infinite;
+}
+@keyframes signal-travel { 0% { transform: translateX(-60px); opacity: 0; } 12% { opacity: 1; } 85% { opacity: 1; } 100% { transform: translateX(500px); opacity: 0; } }
+[data-motion-paused="true"] :is(.live-dot, .visual-signal, .mission-object, .mission-satellite),
+[data-motion-paused="true"] .visual-topline::after { animation-play-state: paused; }
+
+@media (hover: none), (pointer: coarse) {
+  .motion-light { display: none; }
+  .app-shell [data-motion-tilt]:hover { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .motion-light { display: none; }
+  .live-dot, .visual-signal, .visual-topline::after, .app-shell .topnav a.active::after { animation: none; }
+  .app-shell [data-motion-tilt][data-motion-hover],
+  .app-shell [data-motion-tilt][data-motion-hover]:focus-within,
+  :is(.app-shell, .industrial-login) .ant-btn:not(:disabled):not(.ant-btn-loading):active,
+  :is(.app-shell, .industrial-login) .ant-btn:hover .anticon-arrow-right { transform: none; }
+}
+@media (forced-colors: active) { .motion-light, .visual-topline::after { display: none; } }

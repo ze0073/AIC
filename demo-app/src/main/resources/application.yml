@@ -1,0 +1,14 @@
+server:
+  port: ${DEMO_SERVER_PORT:8091}
+spring:
+  datasource:
+    url: ${DEMO_DATASOURCE_URL:jdbc:mysql://localhost:3308/shijie_demo?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC}
+    username: ${DEMO_DATASOURCE_USERNAME:shijie_demo}
+    password: ${DEMO_DATASOURCE_PASSWORD:shijie-demo-dev}
+  sql:
+    init:
+      mode: always
+      encoding: UTF-8
+demo:
+  mode: ${DEMO_MODE:defective}
+  upload-root: ${DEMO_UPLOAD_ROOT:./data/uploads}

@@ -1,0 +1,12 @@
+.brand.brand-integrated { gap: 0; width: 146px; flex-shrink: 0; line-height: 1; color: #eff3e6; text-decoration: none; }
+.brand-integrated-art { width: 100%; height: auto; display: block; overflow: visible; }
+.brand-integrated-accent { stroke: #dcef4a; }
+.brand-integrated-name { fill: currentColor; opacity: .85; font: 700 14px Consolas,monospace; letter-spacing: 3px; }
+.login-topbar .brand.brand-integrated { width: 166px; }
+.login-boot-brand.brand.brand-integrated { width: 190px; }
+@media (max-width: 760px) {
+  .app-shell .brand.brand-integrated { width: 112px; }
+  .login-boot-brand.brand.brand-integrated { width: 154px; }
+}
+@media (max-width: 650px) { .login-topbar .brand.brand-integrated { width: 134px; } }
+@media (forced-colors: active) { .brand-integrated-accent { stroke: currentColor; } }

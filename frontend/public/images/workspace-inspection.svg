@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 144" fill="none">
+  <!-- Original motif: a webpage, a scanning lens, and a verified result. -->
+  <g stroke="#20241c" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M15 8V3m-7 12H3m77 0h7"/>
+    <rect x="12" y="16" width="62" height="84" rx="7" fill="#f8faec"/>
+    <path d="M12 34h62"/>
+    <path d="M20 26h1m7 0h1m7 0h1" stroke-width="4"/>
+    <path d="M23 46h28m-28 8h17" stroke-width="2"/>
+    <path d="m30 65-7 7 7 7m17-14 7 7-7 7m-7-15-4 16" stroke-width="2.5"/>
+    <path d="M23 90h17" stroke-width="2"/>
+    <path d="m80 103 10 14" stroke-width="9"/>
+    <path d="m80 103 10 14" stroke="#f8faec" stroke-width="3"/>
+    <circle cx="66" cy="84" r="23" fill="#20241c"/>
+    <circle cx="66" cy="84" r="17" fill="#f2f532" stroke="#f8faec" stroke-width="1.4"/>
+    <path d="m57 84 6 6 12-13" stroke-width="3.5"/>
+    <path d="M14 114h31m-25 7h18" stroke-dasharray="2 5" stroke-width="1.2"/>
+    <path d="M22 134h41" stroke-width="1.4"/>
+    <circle cx="22" cy="134" r="3" fill="#f8faec" stroke-width="1.4"/>
+    <circle cx="43" cy="134" r="3" fill="#20241c" stroke-width="1.4"/>
+    <circle cx="64" cy="134" r="3" fill="#f8faec" stroke-width="1.4"/>
+  </g>
+</svg>

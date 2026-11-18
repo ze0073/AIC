@@ -1,0 +1,65 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: shijie-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-shijie_accessibility}
+      MYSQL_USER: ${MYSQL_USER:-shijie}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-shijie-dev}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root-dev-only}
+      TZ: UTC
+    ports:
+      - "${MYSQL_BIND_HOST:-127.0.0.1}:${MYSQL_PORT:-3306}:3306"
+    volumes:
+      - shijie_mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p${MYSQL_ROOT_PASSWORD:-root-dev-only}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  zap-tool:
+    image: ${ZAP_IMAGE:-zaproxy/zap-stable:2.16.1}
+    profiles: ["tools"]
+    command: ["zap.sh", "-version"]
+    network_mode: none
+  k6-tool:
+    image: ${K6_IMAGE:-grafana/k6:0.57.0}
+    profiles: ["tools"]
+    command: ["version"]
+    network_mode: none
+  demo-mysql:
+    image: mysql:8.4
+    profiles: ["demo"]
+    environment:
+      MYSQL_DATABASE: shijie_demo
+      MYSQL_USER: shijie_demo
+      MYSQL_PASSWORD: ${DEMO_MYSQL_PASSWORD:-shijie-demo-dev}
+      MYSQL_ROOT_PASSWORD: ${DEMO_MYSQL_ROOT_PASSWORD:-demo-root-dev-only}
+      TZ: UTC
+    ports:
+      - "${DEMO_MYSQL_BIND_HOST:-127.0.0.1}:${DEMO_MYSQL_PORT:-3308}:3306"
+    volumes:
+      - shijie_demo_mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p${DEMO_MYSQL_ROOT_PASSWORD:-demo-root-dev-only}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  campus-demo:
+    profiles: ["demo"]
+    build: ./demo-app
+    environment:
+      DEMO_MODE: ${DEMO_MODE:-defective}
+      DEMO_DATASOURCE_URL: jdbc:mysql://demo-mysql:3306/shijie_demo?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+      DEMO_DATASOURCE_USERNAME: shijie_demo
+      DEMO_DATASOURCE_PASSWORD: ${DEMO_MYSQL_PASSWORD:-shijie-demo-dev}
+    ports:
+      - "${DEMO_BIND_HOST:-127.0.0.1}:${DEMO_SERVER_PORT:-8091}:8091"
+    depends_on:
+      demo-mysql:
+        condition: service_healthy
+
+volumes:
+  shijie_mysql_data:
+  shijie_demo_mysql_data:

@@ -1,0 +1,42 @@
+CREATE TABLE agent_tasks (
+    id CHAR(26) PRIMARY KEY,
+    project_id CHAR(26) NOT NULL,
+    target_id CHAR(26) NOT NULL,
+    suite_version_id CHAR(26) NOT NULL,
+    created_by CHAR(26),
+    goal VARCHAR(1000) NOT NULL,
+    status VARCHAR(30) NOT NULL,
+    ai_consent BOOLEAN NOT NULL,
+    plan_json JSON NOT NULL,
+    plan_hash CHAR(64) NOT NULL,
+    summary_json JSON,
+    current_run_id CHAR(26),
+    cancel_requested BOOLEAN NOT NULL DEFAULT FALSE,
+    error_message VARCHAR(1000),
+    created_at DATETIME(3) NOT NULL,
+    started_at DATETIME(3),
+    finished_at DATETIME(3),
+    INDEX idx_agent_tasks_project (project_id, created_at),
+    CONSTRAINT fk_agent_tasks_project FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE CASCADE,
+    CONSTRAINT fk_agent_tasks_target FOREIGN KEY (target_id) REFERENCES online_targets(id) ON DELETE RESTRICT,
+    CONSTRAINT fk_agent_tasks_suite FOREIGN KEY (suite_version_id) REFERENCES test_suite_versions(id) ON DELETE RESTRICT,
+    CONSTRAINT fk_agent_tasks_creator FOREIGN KEY (created_by) REFERENCES app_users(id) ON DELETE SET NULL,
+    CONSTRAINT fk_agent_tasks_run FOREIGN KEY (current_run_id) REFERENCES test_runs(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE agent_steps (
+    id CHAR(26) PRIMARY KEY,
+    task_id CHAR(26) NOT NULL,
+    step_no INT NOT NULL,
+    action VARCHAR(30) NOT NULL,
+    reason VARCHAR(500),
+    argument_json JSON NOT NULL,
+    result_json JSON,
+    status VARCHAR(30) NOT NULL,
+    run_id CHAR(26),
+    created_at DATETIME(3) NOT NULL,
+    finished_at DATETIME(3),
+    UNIQUE KEY uk_agent_step_no (task_id, step_no),
+    CONSTRAINT fk_agent_steps_task FOREIGN KEY (task_id) REFERENCES agent_tasks(id) ON DELETE CASCADE,
+    CONSTRAINT fk_agent_steps_run FOREIGN KEY (run_id) REFERENCES test_runs(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

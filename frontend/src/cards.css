@@ -1,0 +1,219 @@
+/* Rounded glass cards inspired by the reference's feature grid. */
+.app-shell {
+  background: radial-gradient(ellipse at 6% 20%, #dbe7c780, transparent 42%),
+    radial-gradient(ellipse at 95% 48%, #d9e8e580, transparent 44%), #f1f3ec;
+}
+:is(.app-shell, .ant-modal, .ant-drawer) .ant-card {
+  --card-accent: #73882e;
+  --card-rgb: 115, 136, 46;
+  --card-tint: #eef3df;
+  position: relative;
+  isolation: isolate;
+  border: 1px solid rgba(var(--card-rgb), .16);
+  border-radius: 16px;
+  background: radial-gradient(ellipse at 100% 0, rgba(var(--card-rgb), .055), transparent 62%),
+    linear-gradient(145deg, #ffffffed, #ffffffb8);
+  box-shadow: inset 0 1px 0 #fff, 0 4px 16px #293a2205, 0 16px 36px #293a2205;
+  transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease;
+}
+/* A fine inner rim replaces the previous industrial corner brackets. */
+:is(.app-shell, .ant-modal, .ant-drawer) .ant-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: auto;
+  height: auto;
+  border: 1px solid #ffffff80;
+  border-radius: inherit;
+  background: none;
+  opacity: 1;
+  pointer-events: none;
+}
+:is(.app-shell, .ant-modal, .ant-drawer) .ant-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: auto;
+  height: auto;
+  border-radius: inherit;
+  background: radial-gradient(ellipse at 100% 0, rgba(var(--card-rgb), .1), transparent 65%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+:is(.app-shell, .ant-modal, .ant-drawer) .ant-card > :is(.ant-card-head, .ant-card-body, .ant-card-cover) { position: relative; z-index: 1; }
+:is(.app-shell, .ant-modal, .ant-drawer) .ant-card > .ant-card-head {
+  border-bottom-color: rgba(var(--card-rgb), .12);
+  background: linear-gradient(90deg, rgba(var(--card-rgb), .035), transparent);
+  border-radius: 15px 15px 0 0;
+}
+:is(.app-shell, .ant-modal, .ant-drawer) .ant-card-head-title { position: relative; padding-left: 13px; }
+:is(.app-shell, .ant-modal, .ant-drawer) .ant-card-head-title::before {
+  content: ""; position: absolute; left: 0; top: 50%; width: 4px; height: 16px;
+  background: var(--card-accent); transform: translateY(-50%); border-radius: 4px;
+}
+:is(.app-shell, .ant-modal, .ant-drawer) .ant-card:focus-within {
+  border-color: var(--card-accent);
+  box-shadow: 0 0 0 3px rgba(var(--card-rgb), .12), 0 12px 32px #293a220a;
+}
+/* Each category keeps its own tint and icon color. */
+.app-shell .ant-col:nth-child(3n + 2) > .project-card,
+.app-shell .hosting-site-card:nth-child(3n + 2),
+.app-shell :is(.quality-resource-card, .interaction-card, .smart-evidence-links, .repair-source-card) {
+  --card-accent: #327d87; --card-rgb: 50, 125, 135; --card-tint: #e6f2f2;
+}
+.app-shell .ant-col:nth-child(3n) > .project-card,
+.app-shell .hosting-site-card:nth-child(3n),
+.app-shell :is(.issues-card, .smart-actions-card, .smart-boundary-card) {
+  --card-accent: #9c742f; --card-rgb: 156, 116, 47; --card-tint: #f6efdf;
+}
+.app-shell :is(.assistant-chat-card, .assistant-scope-card, .assistant-action-card, .agent-form-card, .agent-plan-card, .repair-editor-card) {
+  --card-accent: #7f67a0; --card-rgb: 127, 103, 160; --card-tint: #f0ebf7;
+}
+.app-shell :is(.project-card, .hosting-site-card) {
+  background: radial-gradient(ellipse at 100% 0, rgba(var(--card-rgb), .09), transparent 68%),
+    linear-gradient(145deg, #fffffff2, #ffffffbd);
+}
+.app-shell .project-card { height: auto; min-height: 294px; }
+.app-shell :is(.project-card, .hosting-site-card) > .ant-card-body { padding: 26px; }
+.app-shell .project-card > .ant-card-body { min-height: 292px; }
+.app-shell .project-card h4 { font-size: 19px !important; margin: 12px 0 8px !important; overflow-wrap: anywhere; }
+.app-shell .project-card .ant-typography-secondary { line-height: 1.8; flex-shrink: 0; min-height: 44px; margin-bottom: auto !important; }
+.app-shell .repair-workspace .ant-card { border-radius: 16px; }
+.app-shell :is(.project-icon, .hosting-site-symbol) {
+  border: 1px solid rgba(var(--card-rgb), .12); border-radius: 13px; color: var(--card-accent);
+  background: linear-gradient(145deg, #ffffffb8, var(--card-tint));
+  box-shadow: inset 0 1px 0 #fff, 0 4px 10px rgba(var(--card-rgb), .06);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.app-shell .project-card-index { color: var(--card-accent); margin-top: 14px; }
+.app-shell .project-card .ant-tag:not(.ant-tag-status) {
+  border-color: rgba(var(--card-rgb), .12); border-radius: 20px;
+  background: rgba(var(--card-rgb), .075); color: var(--card-accent); font-size: 11px; padding-inline: 10px;
+}
+.app-shell .project-card .ant-flex:last-child, .app-shell .hosting-card-footer {
+  border-top: 1px solid rgba(var(--card-rgb), .12); margin-top: 12px; padding-top: 14px;
+}
+.app-shell .project-card .ant-btn { border-radius: 8px; }
+.app-shell .project-card .ant-btn-primary { background: var(--card-tint); border-color: rgba(var(--card-rgb), .22); color: #445320; }
+.app-shell .project-card .ant-btn-primary:not(:disabled):not(.ant-btn-disabled):is(:hover, :active) {
+  background: var(--acid); border-color: var(--acid); color: #23291b;
+}
+.app-shell .hosting-card-footer > .anticon { color: var(--card-accent); }
+/* Activity and overview cards share the same rounded glass surface. */
+.app-shell .recent-run {
+  --card-accent: #327d87; --card-rgb: 50, 125, 135;
+  position: relative; isolation: isolate; height: 164px;
+  border: 1px solid rgba(var(--card-rgb), .16); border-radius: 16px;
+  background: radial-gradient(ellipse at 100% 0, rgba(var(--card-rgb), .075), transparent 65%),
+    linear-gradient(145deg, #ffffffed, #ffffffb8);
+  box-shadow: inset 0 1px 0 #fff, 0 6px 20px #293a2206;
+  transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+.app-shell .recent-run:nth-child(even) { --card-accent: #73882e; --card-rgb: 115, 136, 46; }
+.app-shell .recent-run-index {
+  padding: 4px 10px; border: 1px solid rgba(var(--card-rgb), .12); border-radius: 8px;
+  background: rgba(var(--card-rgb), .065); color: var(--card-accent);
+}
+.app-shell .recent-run .ant-tag { border-radius: 20px; padding-inline: 9px; }
+.app-shell .recent-run-bottom { border-top-color: rgba(var(--card-rgb), .12); }
+.app-shell .recent-run-bottom svg { color: var(--card-accent); }
+.app-shell .home-overview { overflow: visible; border: 0; background: transparent; gap: 14px; }
+.app-shell .home-overview > div {
+  --card-accent: #73882e; --card-rgb: 115, 136, 46;
+  position: relative; isolation: isolate;
+  border: 1px solid rgba(var(--card-rgb), .16); border-radius: 16px;
+  background: radial-gradient(ellipse at 100% 0, rgba(var(--card-rgb), .09), transparent 65%),
+    linear-gradient(145deg, #fffffff5, #ffffffd9);
+  box-shadow: inset 0 1px 0 #fff, 0 8px 22px #293a2208;
+  transition: border-color .3s ease, box-shadow .3s ease;
+}
+.app-shell .home-overview > div:nth-child(2) { --card-accent: #327d87; --card-rgb: 50, 125, 135; }
+.app-shell .home-overview > div:nth-child(3) { --card-accent: #9c742f; --card-rgb: 156, 116, 47; }
+.app-shell .overview-icon { border-radius: 12px; background: rgba(var(--card-rgb), .08); color: var(--card-accent); }
+.app-shell .example-card { --card-accent: #9c742f; --card-rgb: 156, 116, 47; }
+.app-shell .ant-col:nth-child(even) > .example-card { --card-accent: #7f67a0; --card-rgb: 127, 103, 160; }
+.app-shell .example-number {
+  color: var(--card-accent); padding: 9px 13px;
+  border: 1px solid rgba(var(--card-rgb), .12); background: rgba(var(--card-rgb), .065);
+  border-radius: 12px; font-size: 26px;
+}
+.app-shell .example-card .ant-btn { border-radius: 8px; }
+.app-shell :is(.quality-guide-steps article, .smart-action-list > article, .repair-explanation > section, .plan-plain-summary section) {
+  border-radius: 12px; border-color: #d9e1ce; background: linear-gradient(145deg, #ffffffdf, #ffffff9c);
+  box-shadow: inset 0 1px 0 #fff, 0 4px 14px #293a2205;
+}
+.app-shell .quality-guide-steps article.active {
+  border: 1px solid #a8bb72; background: linear-gradient(145deg, #fff, #eff5e2); box-shadow: 0 0 0 3px #73882e0a;
+}
+.app-shell .quality-guide-assistant { border-radius: 12px; background: linear-gradient(120deg, #ffffffd9, #f0ebf3b8); border-color: #ddd5e8; }
+.app-shell .hosting-result-grid > div { border: 1px solid #dbe3d1; border-radius: 12px; background: linear-gradient(145deg, #ffffffed, #f0f5e5a3); }
+.app-shell .stats > .ant-col:nth-child(2) .ant-card { --card-accent: #b56460; --card-rgb: 181, 100, 96; }
+.app-shell .stats > .ant-col:nth-child(3) .ant-card { --card-accent: #9c742f; --card-rgb: 156, 116, 47; }
+.app-shell .stats > .ant-col:nth-child(4) .ant-card { --card-accent: #327d87; --card-rgb: 50, 125, 135; }
+.app-shell .stats > .ant-col:nth-child(5) .ant-card { --card-accent: #7f67a0; --card-rgb: 127, 103, 160; }
+.app-shell :is(.home-hero, .agent-landing, .assistant-hero, .quality-agent-banner) { border-radius: 20px; }
+.app-shell :is(.hosting-home-entry, .hosting-journey, .hosting-steps, .quality-guided-start, .quality-professional-tools, .repair-hero) { border-radius: 16px; }
+/* The login panel uses the reference's translucent dark-card treatment. */
+.industrial-login.login-shell .login-card {
+  --card-rgb: 220, 239, 74;
+  border-radius: 20px;
+  background: radial-gradient(ellipse at 100% 0, #dcef4a0a, transparent 65%), linear-gradient(145deg, #ffffff0c, #ffffff05), #1c241bd9;
+  border-color: #d5e5bd26; box-shadow: inset 0 1px 0 #ffffff0e, 0 24px 64px #00000030;
+}
+.industrial-login .login-card::before {
+  inset: 0; width: auto; height: auto; border: 1px solid #ffffff08; border-radius: inherit;
+  background: none; pointer-events: none;
+}
+.industrial-login .capability-tabs > button {
+  border-radius: 12px; background: linear-gradient(145deg, #ffffff08, #ffffff03);
+  border-color: #ffffff16; box-shadow: inset 0 1px 0 #ffffff05;
+}
+.industrial-login .capability-tabs > button.active { background: #dcef4a0e; border-color: #dcef4a40; }
+/* Blur is limited to standalone cards so table and editor content stay crisp. */
+@supports (backdrop-filter: blur(12px)) {
+  .app-shell :is(.project-card, .hosting-site-card, .recent-run, .example-card),
+  .app-shell .home-overview > div,
+  .industrial-login .login-card,
+  .industrial-login .capability-tabs > button { backdrop-filter: blur(12px); }
+}
+@media (hover: hover) and (pointer: fine) {
+  .app-shell :is(.project-card, .hosting-site-card, .recent-run, .example-card):hover {
+    transform: translateY(-5px); border-color: rgba(var(--card-rgb), .42);
+    box-shadow: inset 0 1px 0 #fff, 0 8px 22px rgba(var(--card-rgb), .09), 0 24px 48px #293a2212;
+  }
+  .app-shell .ant-card:hover::after { opacity: 1; }
+  .app-shell :is(.project-card, .hosting-site-card):hover :is(.project-icon, .hosting-site-symbol) {
+    transform: translateY(-2px); box-shadow: inset 0 1px 0 #fff, 0 6px 18px rgba(var(--card-rgb), .14);
+  }
+  .app-shell .ant-card:not(.project-card):not(.hosting-site-card):hover,
+  .app-shell .home-overview > div:hover { border-color: rgba(var(--card-rgb), .32); }
+}
+@media (max-width: 650px) {
+  .app-shell .home-overview { gap: 7px; margin-inline: 6px; }
+  .app-shell .home-overview > div { border-radius: 12px; padding: 14px 9px; }
+  .app-shell .recent-run { height: 148px; }
+  .app-shell .recent-run-project { font-size: 15px; }
+  .app-shell .project-card { min-height: 284px; }
+  .app-shell .project-card > .ant-card-body { min-height: 282px; }
+  .app-shell :is(.project-card, .hosting-site-card) > .ant-card-body { padding: 22px; }
+  .app-shell .example-number { padding: 7px 10px; font-size: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(.app-shell, .ant-modal, .ant-drawer) .ant-card,
+  .app-shell :is(.recent-run, .project-icon, .hosting-site-symbol),
+  .app-shell .home-overview > div { transition: none; }
+  .app-shell :is(.project-card, .hosting-site-card, .recent-run, .example-card):hover,
+  .app-shell :is(.project-card, .hosting-site-card):hover :is(.project-icon, .hosting-site-symbol) { transform: none; }
+}
+@media (forced-colors: active) {
+  :is(.app-shell, .ant-modal, .ant-drawer) .ant-card,
+  .app-shell .recent-run, .app-shell .home-overview > div,
+  .industrial-login .login-card, .industrial-login .capability-tabs > button {
+    border: 1px solid CanvasText; box-shadow: none; backdrop-filter: none;
+  }
+  :is(.app-shell, .ant-modal, .ant-drawer) .ant-card::before,
+  :is(.app-shell, .ant-modal, .ant-drawer) .ant-card::after { display: none; }
+}

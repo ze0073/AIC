@@ -1,0 +1,170 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>P0 规则夹具</title></head><body>
+<!-- 每个 template 是一个独立组件级样例；测试运行器会逐个挂载到独立文档。 -->
+<template data-rule="R001" data-expect="hit" data-case="1"><img src="1.png"></template>
+<template data-rule="R001" data-expect="hit" data-case="2"><img src="2.png"></template>
+<template data-rule="R001" data-expect="hit" data-case="3"><img src="3.png"></template>
+<template data-rule="R001" data-expect="hit" data-case="4"><img src="4.png"></template>
+<template data-rule="R001" data-expect="hit" data-case="5"><img src="5.png"></template>
+<template data-rule="R001" data-expect="hit" data-case="6"><img src="6.png"></template>
+<template data-rule="R001" data-expect="hit" data-case="7"><img src="7.png"></template>
+<template data-rule="R001" data-expect="hit" data-case="8"><img src="8.png"></template>
+<template data-rule="R001" data-expect="hit" data-case="9"><img src="9.png"></template>
+<template data-rule="R001" data-expect="hit" data-case="10"><img src="10.png"></template>
+<template data-rule="R001" data-expect="pass" data-case="1"><img src="1.png" alt="校园入口"></template>
+<template data-rule="R001" data-expect="pass" data-case="2"><img src="2.png" alt=""></template>
+<template data-rule="R001" data-expect="pass" data-case="3"><img src="3.png" alt="课程表"></template>
+<template data-rule="R001" data-expect="pass" data-case="4"><img src="4.png" alt="图书馆"></template>
+<template data-rule="R001" data-expect="pass" data-case="5"><img src="5.png" alt="校徽"></template>
+<template data-rule="R001" data-expect="pass" data-case="6"><img src="6.png" alt="讲座海报"></template>
+<template data-rule="R001" data-expect="pass" data-case="7"><img src="7.png" alt="实验室"></template>
+<template data-rule="R001" data-expect="pass" data-case="8"><img src="8.png" alt="校园地图"></template>
+<template data-rule="R001" data-expect="pass" data-case="9"><img src="9.png" alt="借阅流程"></template>
+<template data-rule="R001" data-expect="pass" data-case="10"><img src="10.png" alt="活动现场"></template>
+
+<template data-rule="R002" data-expect="hit" data-case="1"><input></template>
+<template data-rule="R002" data-expect="hit" data-case="2"><textarea></textarea></template>
+<template data-rule="R002" data-expect="hit" data-case="3"><select><option>A</option></select></template>
+<template data-rule="R002" data-expect="hit" data-case="4"><input type="email"></template>
+<template data-rule="R002" data-expect="hit" data-case="5"><input type="search"></template>
+<template data-rule="R002" data-expect="hit" data-case="6"><input type="number"></template>
+<template data-rule="R002" data-expect="hit" data-case="7"><input type="password"></template>
+<template data-rule="R002" data-expect="hit" data-case="8"><textarea rows="2"></textarea></template>
+<template data-rule="R002" data-expect="hit" data-case="9"><select><option>B</option></select></template>
+<template data-rule="R002" data-expect="hit" data-case="10"><input type="tel"></template>
+<template data-rule="R002" data-expect="pass" data-case="1"><label for="f1">姓名</label><input id="f1"></template>
+<template data-rule="R002" data-expect="pass" data-case="2"><label>邮箱<input></label></template>
+<template data-rule="R002" data-expect="pass" data-case="3"><input aria-label="检索"></template>
+<template data-rule="R002" data-expect="pass" data-case="4"><span id="l4">年级</span><select aria-labelledby="l4"></select></template>
+<template data-rule="R002" data-expect="pass" data-case="5"><textarea title="留言"></textarea></template>
+<template data-rule="R002" data-expect="pass" data-case="6"><label for="f6">电话</label><input id="f6"></template>
+<template data-rule="R002" data-expect="pass" data-case="7"><input aria-label="学号"></template>
+<template data-rule="R002" data-expect="pass" data-case="8"><label>专业<select></select></label></template>
+<template data-rule="R002" data-expect="pass" data-case="9"><span id="l9">备注</span><textarea aria-labelledby="l9"></textarea></template>
+<template data-rule="R002" data-expect="pass" data-case="10"><input title="验证码"></template>
+
+<template data-rule="R003" data-expect="hit" data-case="1"><button></button></template>
+<template data-rule="R003" data-expect="hit" data-case="2"><a href="#"></a></template>
+<template data-rule="R003" data-expect="hit" data-case="3"><button><svg></svg></button></template>
+<template data-rule="R003" data-expect="hit" data-case="4"><a href="next"><span></span></a></template>
+<template data-rule="R003" data-expect="hit" data-case="5"><div role="button"></div></template>
+<template data-rule="R003" data-expect="hit" data-case="6"><span role="link"></span></template>
+<template data-rule="R003" data-expect="hit" data-case="7"><button><img alt=""></button></template>
+<template data-rule="R003" data-expect="hit" data-case="8"><a href="home"><img alt=""></a></template>
+<template data-rule="R003" data-expect="hit" data-case="9"><button><i></i></button></template>
+<template data-rule="R003" data-expect="hit" data-case="10"><a href="help"><svg></svg></a></template>
+<template data-rule="R003" data-expect="pass" data-case="1"><button>提交</button></template>
+<template data-rule="R003" data-expect="pass" data-case="2"><a href="#">首页</a></template>
+<template data-rule="R003" data-expect="pass" data-case="3"><button aria-label="关闭"></button></template>
+<template data-rule="R003" data-expect="pass" data-case="4"><a href="next" title="下一页"></a></template>
+<template data-rule="R003" data-expect="pass" data-case="5"><div role="button" aria-label="收藏"></div></template>
+<template data-rule="R003" data-expect="pass" data-case="6"><span role="link" aria-label="详情"></span></template>
+<template data-rule="R003" data-expect="pass" data-case="7"><button><img alt="搜索"></button></template>
+<template data-rule="R003" data-expect="pass" data-case="8"><a href="home"><img alt="返回首页"></a></template>
+<template data-rule="R003" data-expect="pass" data-case="9"><span id="b9">保存</span><button aria-labelledby="b9"></button></template>
+<template data-rule="R003" data-expect="pass" data-case="10"><a href="help">帮助中心</a></template>
+
+<template data-rule="R004" data-expect="hit" data-case="1"><meta data-document-lang=""></template>
+<template data-rule="R004" data-expect="hit" data-case="2"><meta data-document-lang=" "></template>
+<template data-rule="R004" data-expect="hit" data-case="3"><meta data-document-lang="123"></template>
+<template data-rule="R004" data-expect="hit" data-case="4"><meta data-document-lang="zh_"></template>
+<template data-rule="R004" data-expect="hit" data-case="5"><meta data-document-lang="中文"></template>
+<template data-rule="R004" data-expect="hit" data-case="6"><meta data-document-lang="z"></template>
+<template data-rule="R004" data-expect="hit" data-case="7"><meta data-document-lang="zh--CN"></template>
+<template data-rule="R004" data-expect="hit" data-case="8"><meta data-document-lang="-zh"></template>
+<template data-rule="R004" data-expect="hit" data-case="9"><meta data-document-lang="zh_CN"></template>
+<template data-rule="R004" data-expect="hit" data-case="10"><meta data-document-lang="?"></template>
+<template data-rule="R004" data-expect="pass" data-case="1"><meta data-document-lang="zh-CN"></template>
+<template data-rule="R004" data-expect="pass" data-case="2"><meta data-document-lang="zh"></template>
+<template data-rule="R004" data-expect="pass" data-case="3"><meta data-document-lang="en"></template>
+<template data-rule="R004" data-expect="pass" data-case="4"><meta data-document-lang="en-US"></template>
+<template data-rule="R004" data-expect="pass" data-case="5"><meta data-document-lang="fr"></template>
+<template data-rule="R004" data-expect="pass" data-case="6"><meta data-document-lang="ja-JP"></template>
+<template data-rule="R004" data-expect="pass" data-case="7"><meta data-document-lang="ko"></template>
+<template data-rule="R004" data-expect="pass" data-case="8"><meta data-document-lang="de-DE"></template>
+<template data-rule="R004" data-expect="pass" data-case="9"><meta data-document-lang="es"></template>
+<template data-rule="R004" data-expect="pass" data-case="10"><meta data-document-lang="pt-BR"></template>
+
+<template data-rule="R005" data-expect="hit" data-case="1"><h2>A</h2></template>
+<template data-rule="R005" data-expect="hit" data-case="2"><h1>A</h1><h3>B</h3></template>
+<template data-rule="R005" data-expect="hit" data-case="3"><h1>A</h1><h4>B</h4></template>
+<template data-rule="R005" data-expect="hit" data-case="4"><h3>A</h3></template>
+<template data-rule="R005" data-expect="hit" data-case="5"><h1>A</h1><h5>B</h5></template>
+<template data-rule="R005" data-expect="hit" data-case="6"><h2>A</h2><h4>B</h4></template>
+<template data-rule="R005" data-expect="hit" data-case="7"><h1>A</h1><h2>B</h2><h4>C</h4></template>
+<template data-rule="R005" data-expect="hit" data-case="8"><h6>A</h6></template>
+<template data-rule="R005" data-expect="hit" data-case="9"><h1>A</h1><h6>B</h6></template>
+<template data-rule="R005" data-expect="hit" data-case="10"><h2>A</h2><h5>B</h5></template>
+<template data-rule="R005" data-expect="pass" data-case="1"><h1>A</h1></template>
+<template data-rule="R005" data-expect="pass" data-case="2"><h1>A</h1><h2>B</h2></template>
+<template data-rule="R005" data-expect="pass" data-case="3"><h1>A</h1><h2>B</h2><h3>C</h3></template>
+<template data-rule="R005" data-expect="pass" data-case="4"><h1>A</h1><h2>B</h2><h2>C</h2></template>
+<template data-rule="R005" data-expect="pass" data-case="5"><h1>A</h1><h2>B</h2><h3>C</h3><h4>D</h4></template>
+<template data-rule="R005" data-expect="pass" data-case="6"><h1>A</h1><h2>B</h2><h3>C</h3><h2>D</h2></template>
+<template data-rule="R005" data-expect="pass" data-case="7"><h1>A</h1><h1>B</h1></template>
+<template data-rule="R005" data-expect="pass" data-case="8"><h1>A</h1><h2>B</h2><h3>C</h3><h4>D</h4><h5>E</h5></template>
+<template data-rule="R005" data-expect="pass" data-case="9"><h1>A</h1><h2>B</h2><h3>C</h3><h4>D</h4><h5>E</h5><h6>F</h6></template>
+<template data-rule="R005" data-expect="pass" data-case="10"><h1>A</h1><h2>B</h2><h3>C</h3><h2>D</h2></template>
+
+<template data-rule="R006" data-expect="hit" data-case="1"><p style="color:#aaa;background:#fff">文字</p></template>
+<template data-rule="R006" data-expect="hit" data-case="2"><span style="color:#999;background:#fff">文字</span></template>
+<template data-rule="R006" data-expect="hit" data-case="3"><a style="color:#77a;background:#fff">链接</a></template>
+<template data-rule="R006" data-expect="hit" data-case="4"><label style="color:#bbb;background:#fff">标签</label></template>
+<template data-rule="R006" data-expect="hit" data-case="5"><button style="color:#aaa;background:#eee">按钮</button></template>
+<template data-rule="R006" data-expect="hit" data-case="6"><p style="color:#777;background:#999">文字</p></template>
+<template data-rule="R006" data-expect="hit" data-case="7"><h2 style="color:#ccc;background:#fff">标题</h2></template>
+<template data-rule="R006" data-expect="hit" data-case="8"><li style="color:#aaa;background:#fafafa">列表</li></template>
+<template data-rule="R006" data-expect="hit" data-case="9"><td style="color:#bbb;background:#fff">单元格</td></template>
+<template data-rule="R006" data-expect="hit" data-case="10"><p style="color:rgb(180,180,180);background:rgb(255,255,255)">文字</p></template>
+<template data-rule="R006" data-expect="pass" data-case="1"><p style="color:#000;background:#fff">文字</p></template>
+<template data-rule="R006" data-expect="pass" data-case="2"><span style="color:#333;background:#fff">文字</span></template>
+<template data-rule="R006" data-expect="pass" data-case="3"><a style="color:#0645ad;background:#fff">链接</a></template>
+<template data-rule="R006" data-expect="pass" data-case="4"><label style="color:#fff;background:#222">标签</label></template>
+<template data-rule="R006" data-expect="pass" data-case="5"><button style="color:#fff;background:#14566e">按钮</button></template>
+<template data-rule="R006" data-expect="pass" data-case="6"><p style="color:#111;background:#eee">文字</p></template>
+<template data-rule="R006" data-expect="pass" data-case="7"><h2 style="color:#163d70;background:#fff">标题</h2></template>
+<template data-rule="R006" data-expect="pass" data-case="8"><li style="color:#222;background:#fafafa">列表</li></template>
+<template data-rule="R006" data-expect="pass" data-case="9"><td style="color:#333;background:#fff">单元格</td></template>
+<template data-rule="R006" data-expect="pass" data-case="10"><p style="color:rgb(20,20,20);background:rgb(255,255,255)">文字</p></template>
+
+<template data-rule="R007" data-expect="hit" data-case="1"><div onclick="x()">操作</div></template>
+<template data-rule="R007" data-expect="hit" data-case="2"><span onclick="x()">操作</span></template>
+<template data-rule="R007" data-expect="hit" data-case="3"><button tabindex="-1">操作</button></template>
+<template data-rule="R007" data-expect="hit" data-case="4"><a href="#" tabindex="-1">操作</a></template>
+<template data-rule="R007" data-expect="hit" data-case="5"><input tabindex="-1"></template>
+<template data-rule="R007" data-expect="hit" data-case="6"><select tabindex="-1"></select></template>
+<template data-rule="R007" data-expect="hit" data-case="7"><textarea tabindex="-1"></textarea></template>
+<template data-rule="R007" data-expect="hit" data-case="8"><section onclick="x()">操作</section></template>
+<template data-rule="R007" data-expect="hit" data-case="9"><p onclick="x()">操作</p></template>
+<template data-rule="R007" data-expect="hit" data-case="10"><div onclick="x()" tabindex="-1">操作</div></template>
+<template data-rule="R007" data-expect="pass" data-case="1"><button style="outline:2px solid blue">操作</button></template>
+<template data-rule="R007" data-expect="pass" data-case="2"><a href="#" style="outline:2px solid blue">操作</a></template>
+<template data-rule="R007" data-expect="pass" data-case="3"><input style="outline:2px solid blue"></template>
+<template data-rule="R007" data-expect="pass" data-case="4"><select style="outline:2px solid blue"></select></template>
+<template data-rule="R007" data-expect="pass" data-case="5"><textarea style="outline:2px solid blue"></textarea></template>
+<template data-rule="R007" data-expect="pass" data-case="6"><div role="button" tabindex="0" style="outline:2px solid blue">操作</div></template>
+<template data-rule="R007" data-expect="pass" data-case="7"><button style="box-shadow:0 0 0 3px blue">操作</button></template>
+<template data-rule="R007" data-expect="pass" data-case="8"><a href="#" style="box-shadow:0 0 0 3px blue">操作</a></template>
+<template data-rule="R007" data-expect="pass" data-case="9"><input tabindex="0" style="outline:2px solid blue"></template>
+<template data-rule="R007" data-expect="pass" data-case="10"><span role="button" tabindex="0" style="outline:2px solid blue">操作</span></template>
+
+<template data-rule="R008" data-expect="hit" data-case="1"><i id="x1"></i><b id="x1"></b></template>
+<template data-rule="R008" data-expect="hit" data-case="2"><button aria-labelledby="missing2"></button></template>
+<template data-rule="R008" data-expect="hit" data-case="3"><input aria-describedby="missing3"></template>
+<template data-rule="R008" data-expect="hit" data-case="4"><button aria-controls="missing4"></button></template>
+<template data-rule="R008" data-expect="hit" data-case="5"><div aria-owns="missing5"></div></template>
+<template data-rule="R008" data-expect="hit" data-case="6"><i id="x6"></i><b id="x6"></b></template>
+<template data-rule="R008" data-expect="hit" data-case="7"><button aria-labelledby="a7 missing7"><span id="a7">A</span></button></template>
+<template data-rule="R008" data-expect="hit" data-case="8"><input aria-describedby="missing8 other8"><i id="other8"></i></template>
+<template data-rule="R008" data-expect="hit" data-case="9"><i id="x9"></i><b id="x9"></b><u id="x9"></u></template>
+<template data-rule="R008" data-expect="hit" data-case="10"><section aria-owns="missing10"></section></template>
+<template data-rule="R008" data-expect="pass" data-case="1"><i id="p1"></i></template>
+<template data-rule="R008" data-expect="pass" data-case="2"><span id="p2">标签</span><button aria-labelledby="p2"></button></template>
+<template data-rule="R008" data-expect="pass" data-case="3"><p id="p3">帮助</p><input aria-describedby="p3"></template>
+<template data-rule="R008" data-expect="pass" data-case="4"><div id="p4"></div><button aria-controls="p4"></button></template>
+<template data-rule="R008" data-expect="pass" data-case="5"><div id="p5"></div><section aria-owns="p5"></section></template>
+<template data-rule="R008" data-expect="pass" data-case="6"><i id="p6"></i></template>
+<template data-rule="R008" data-expect="pass" data-case="7"><span id="p7a">A</span><span id="p7b">B</span><button aria-labelledby="p7a p7b"></button></template>
+<template data-rule="R008" data-expect="pass" data-case="8"><i id="p8a"></i><i id="p8b"></i><input aria-describedby="p8a p8b"></template>
+<template data-rule="R008" data-expect="pass" data-case="9"><i id="p9"></i></template>
+<template data-rule="R008" data-expect="pass" data-case="10"><section id="p10"></section><div aria-owns="p10"></div></template>
+</body></html>

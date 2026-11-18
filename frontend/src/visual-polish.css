@@ -1,0 +1,91 @@
+.primary-page { min-width: 0; }
+.app-shell .visual-banner {
+  position: relative; isolation: isolate; overflow: hidden; border: 1px solid #aabb8938;
+  border-radius: 16px; background: #17211c; color: #f3f6eb;
+}
+.visual-banner-image {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 66% center;
+  z-index: -2; pointer-events: none; transform: scale(1.03);
+}
+.visual-banner-shade { position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(90deg,#111b17f5 0%,#111b17e6 35%,#111b1770 67%,#111b1738),linear-gradient(0deg,#111b1780,transparent 65%);
+}
+.app-shell .visual-banner::before,.app-shell .visual-banner::after { display: none; }
+.visual-banner-details { position: absolute; right: 26px; top: 22px; width: min(30%,260px); color: #dbe8b9; pointer-events: none; }
+.visual-banner-details > span { display: block; font: 9px/1.6 Consolas,monospace; letter-spacing: 1.6px; text-align: right; }
+.visual-banner-ticks { display: block; height: 9px; margin-top: 12px; opacity: .45; border-block: 1px solid #cdddaf40;
+  background: repeating-linear-gradient(90deg,#dbe8b9 0 1px,transparent 1px 14px) center / 100% 4px no-repeat;
+}
+.visual-banner-trace { display: block; height: 1px; margin-top: 14px; position: relative; overflow: hidden; background: #cdddaf24; }
+.visual-banner-trace::after { content: ''; position: absolute; width: 52px; height: 1px; background: linear-gradient(90deg,transparent,#dcef4a99,transparent); transform: translateX(-54px); }
+.visual-banner[data-scene-active="true"] .visual-banner-image { animation: visual-drift 16s ease-in-out infinite; }
+.visual-banner[data-scene-active="true"] .visual-banner-trace::after { animation: visual-trace 8s linear infinite; }
+[data-motion-paused="true"] .visual-banner-image,[data-motion-paused="true"] .visual-banner-trace::after { animation-play-state: paused !important; }
+@keyframes visual-drift { 0%,100% { transform: scale(1.03) translateX(-4px); } 50% { transform: scale(1.03) translateX(4px); } }
+@keyframes visual-trace { 0% { transform: translateX(-54px); opacity: 0; } 12%,80% { opacity: .65; } 100% { transform: translateX(280px); opacity: 0; } }
+.visual-banner-copy,.visual-banner-actions { position: relative; z-index: 1; }
+.visual-banner-copy { max-width: 680px; }
+.visual-banner-kicker { font: 10px/1.6 Consolas,monospace; letter-spacing: 1.8px; color: #d4e1b2; }
+.app-shell .visual-banner h1 { margin: 18px 0 16px; color: #f3f6eb; font-size: clamp(28px,3vw,44px); line-height: 1.3; letter-spacing: -.8px; }
+.app-shell .visual-banner p { color: #d4ddca; line-height: 1.8; margin: 0; font-size: 14px; }
+.app-shell .visual-banner-compact { min-height: 208px; padding: 36px; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 24px; }
+.visual-banner-compact .visual-banner-copy { max-width: min(70%,680px); }
+.app-shell .visual-banner-compact h1 { font-size: 32px; margin-top: 12px; margin-bottom: 12px; }
+.visual-banner-actions .ant-btn { min-height: 44px; }
+.app-shell .visual-banner.home-hero { min-height: 480px; }
+.app-shell .visual-banner.agent-landing { padding: 44px; min-height: 300px; background: #17211c; }
+.app-shell .visual-banner.agent-landing > div:not(.visual-banner-shade):not(.visual-banner-details) { position: relative; z-index: 1; }
+.app-shell .visual-banner.agent-landing .agent-kicker { color: #d4e1b2; }
+.app-shell .visual-banner.agent-landing .ant-typography { color: #d4ddca; }
+.app-shell .visual-banner.agent-landing h1 { font-size: clamp(28px,3.3vw,44px) !important; }
+.app-shell .visual-banner .ant-btn-primary:not(:disabled):not(.ant-btn-loading):is(:hover,:active) { color: #23291b; }
+.app-shell .visual-banner.home-hero .visual-topline::after { animation: none; }
+.app-shell .visual-banner.home-hero .visual-topline > span:last-child { visibility: hidden; }
+.app-shell .visual-banner.home-hero .visual-topline { padding-top: 16px; }
+.app-shell .primary-page .ant-table-wrapper { min-width: 0; }
+.app-shell .primary-page .ant-card:has(.ant-table),.app-shell .primary-page .ant-card:has(form) { background: #fcfdf9; }
+.app-shell .primary-page .card-artwork img { object-position: 78% center; }
+.app-shell .primary-page :is(.project-card,.hosting-site-card):hover .card-artwork img { transform: scale(1.04); }
+@media (hover: hover) and (pointer: fine) {
+  .app-shell .primary-page :is(.project-card,.hosting-site-card):hover { transform: translateY(-4px); }
+}
+.app-shell .primary-page [data-motion-tilt][data-motion-hover] { transform: perspective(950px) translateY(-4px) rotateX(var(--motion-rx,0deg)) rotateY(var(--motion-ry,0deg)); }
+.app-shell .primary-page [data-motion-tilt][data-motion-hover]:focus-within { transform: none; }
+.app-shell .primary-page [data-motion-tilt]:has(:is(button,a,input,select,textarea,[role="button"]):hover) { transform: none; }
+.app-shell .primary-page :is(.project-card,.hosting-site-card):has(:is(button,a,input,select,textarea,[role="button"]):hover) .card-artwork img,
+.app-shell .primary-page :is(.project-card,.hosting-site-card):focus-within .card-artwork img { transform: none; transition: none; }
+@media (max-width: 1024px) {
+  .app-shell .visual-banner-compact { padding: 30px; }
+  .visual-banner-details { right: 20px; top: 18px; }
+}
+@media (max-width: 760px), (hover: none), (pointer: coarse) {
+  .visual-banner[data-scene-active="true"] .visual-banner-image,.visual-banner[data-scene-active="true"] .visual-banner-trace::after { animation: none; }
+  .visual-banner-image { transform: none; }
+  .app-shell .primary-page [data-motion-tilt][data-motion-hover] { transform: none; }
+  .app-shell .primary-page :is(.project-card,.hosting-site-card):hover { transform: none; }
+  .app-shell .primary-page .motion-light { display: none; }
+}
+@media (max-width: 760px) {
+  .app-shell .visual-banner-compact { min-height: 248px; padding: 28px 22px; flex-direction: column; align-items: stretch; gap: 20px; }
+  .visual-banner-compact .visual-banner-copy { max-width: 100%; }
+  .app-shell .visual-banner-compact h1 { font-size: 28px; margin-top: 14px; }
+  .visual-banner-details { width: 80px; right: 16px; top: 18px; }
+  .visual-banner-details > span { display: none; }
+  .visual-banner-kicker { font-size: 9px; letter-spacing: 1px; }
+  .visual-banner-image { object-position: 73% center; }
+  .visual-banner-shade { background: linear-gradient(90deg,#111b17ed,#111b1799),linear-gradient(0deg,#111b17b0,transparent); }
+  .app-shell .visual-banner.agent-landing { padding: 28px 22px; }
+  .app-shell .visual-banner.agent-landing h1 { font-size: clamp(20px,6vw,24px) !important; line-height: 1.5 !important; letter-spacing: -.5px; text-wrap: balance; }
+  .app-shell .visual-banner.agent-landing .agent-landing-symbol { display: none; }
+  .app-shell .visual-banner.home-hero { min-height: 480px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .visual-banner .visual-banner-image,.visual-banner .visual-banner-trace::after { animation: none !important; transform: none; }
+  .app-shell .primary-page .card-artwork img,.app-shell [data-motion-tilt][data-motion-hover] { transform: none !important; }
+  .app-shell .primary-page :is(.project-card,.hosting-site-card):hover { transform: none !important; }
+}
+@media (forced-colors: active) {
+  .visual-banner-image,.visual-banner-shade,.visual-banner-details { display: none; }
+  .app-shell .visual-banner { background: Canvas; color: CanvasText; border-color: CanvasText; }
+  .app-shell .visual-banner :is(h1,p,.visual-banner-kicker,.agent-kicker) { color: CanvasText; }
+}

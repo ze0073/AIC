@@ -1,0 +1,51 @@
+.workbench-intro {
+  --intro-yellow: #f2f532; --intro-rail: 64px;
+  position: fixed; inset: 0; z-index: 1000; overflow: hidden;
+  background: transparent; isolation: isolate; cursor: default;
+}
+.intro-scene { position: absolute; inset: 0; background: #141b16; }
+.intro-background { width: 100%; height: 100%; object-fit: cover; object-position: 62% center; }
+.intro-shade {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg,#111a1633,#111a164d 48%,#111a16ad 72%,#111a16e8), linear-gradient(0deg,#111a1673,transparent 45%);
+}
+.intro-headline {
+  position: absolute; top: 46%; right: clamp(32px,8vw,160px); transform: translateY(-50%);
+  max-width: calc(100% - var(--intro-rail) - 64px); color: #f4f5eb;
+  font: 750 clamp(40px,5vw,88px)/1.28 "Segoe UI Variable","Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  letter-spacing: -2px; text-align: right; text-wrap: balance;
+}
+.intro-headline em { color: #dcef4a; font-style: normal; }
+.intro-progress { position: absolute; inset: 0 auto 0 0; width: var(--intro-rail); background: var(--intro-yellow); transform: scaleY(0); transform-origin: top; will-change: transform; }
+.intro-shutters { position: absolute; inset: 0; pointer-events: none; }
+.intro-shutter {
+  position: absolute; left: 0; width: 100%; height: calc(100% / 3 + 1px); transform: translateX(-101%);
+  background: repeating-linear-gradient(90deg,#ffffff03 0 1px,transparent 1px 5px), linear-gradient(105deg,#243027,#141c17);
+  border-block: 1px solid #7a866f3b; box-shadow: 0 2px 0 #060b08;
+  will-change: transform;
+}
+.intro-shutter:nth-child(2) { background-color: #1c261f; }
+.shutter-seam { position: absolute; right: 16px; inset-block: 16px; width: 2px; background: var(--intro-yellow); }
+.shutter-calibration {
+  position: absolute; right: 35px; top: 50%; width: 96px; height: 16px;
+  border-block: 1px solid #c4d0b72b;
+  background: repeating-linear-gradient(90deg,#c4d0b7b3 0 1px,transparent 1px 12px) center / 100% 7px no-repeat;
+}
+.shutter-rivet { position: absolute; left: 26px; bottom: 24px; width: 5px; height: 5px; border: 1px solid #9ca88b80; box-shadow: 12px 0 0 -1px #9ca88b80; }
+.workbench-intro[data-phase="handoff"] .intro-scene { visibility: hidden; }
+.app-shell[data-workbench-intro="covering"] { visibility: hidden; }
+.workbench-intro-active .ant-message { visibility: hidden; }
+/* The intro replaces the hero's older independent entrance animation. */
+.app-shell .home-hero { animation: none; }
+@media (max-width: 1100px) { .workbench-intro { --intro-rail: 40px; } }
+@media (max-width: 760px) {
+  .workbench-intro { --intro-rail: 8px; }
+  .intro-headline { right: 24px; max-width: calc(100% - 48px); font-size: clamp(28px,6.4vw,46px); letter-spacing: -1px; line-height: 1.45; }
+  .intro-background { object-position: 66% center; }
+  .intro-shade { background: linear-gradient(90deg,#111a1633,#111a16bf),linear-gradient(0deg,#111a165c,transparent); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .workbench-intro { display: none; }
+  .app-shell[data-workbench-intro="covering"] { visibility: visible; }
+}
+@media (forced-colors: active) { .workbench-intro { display: none; } }

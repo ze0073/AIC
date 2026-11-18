@@ -1,0 +1,23 @@
+CREATE TABLE issue_repairs (
+    id CHAR(26) PRIMARY KEY,
+    issue_id CHAR(26) NOT NULL,
+    base_version_id CHAR(26) NOT NULL,
+    new_version_id CHAR(26),
+    target_file VARCHAR(500) NOT NULL,
+    before_sha CHAR(64) NOT NULL,
+    patched_content LONGTEXT NOT NULL,
+    diff_text LONGTEXT NOT NULL,
+    mode VARCHAR(20) NOT NULL,
+    status VARCHAR(20) NOT NULL,
+    explanation JSON NOT NULL,
+    static_scan_id CHAR(26),
+    retest_run_id CHAR(26),
+    created_by CHAR(26) NOT NULL,
+    created_at DATETIME(3) NOT NULL,
+    applied_at DATETIME(3),
+    updated_at DATETIME(3) NOT NULL,
+    INDEX idx_repairs_issue (issue_id, created_at),
+    CONSTRAINT fk_repairs_issue FOREIGN KEY (issue_id) REFERENCES run_issues(id) ON DELETE CASCADE,
+    CONSTRAINT fk_repairs_base FOREIGN KEY (base_version_id) REFERENCES project_versions(id) ON DELETE CASCADE,
+    CONSTRAINT fk_repairs_new FOREIGN KEY (new_version_id) REFERENCES project_versions(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

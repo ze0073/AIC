@@ -1,0 +1,11 @@
+{
+  "R001": {"hit": 10, "pass": 10, "focus": "img alt"},
+  "R002": {"hit": 10, "pass": 10, "focus": "form accessible name"},
+  "R003": {"hit": 10, "pass": 10, "focus": "button and link accessible name"},
+  "R004": {"hit": 10, "pass": 10, "focus": "document language"},
+  "R005": {"hit": 10, "pass": 10, "focus": "heading order"},
+  "R006": {"hit": 10, "pass": 10, "focus": "solid color contrast"},
+  "R007": {"hit": 10, "pass": 10, "focus": "keyboard focus"},
+  "R008": {"hit": 10, "pass": 10, "focus": "id and aria references"},
+  "R009": {"hit": 10, "pass": 10, "focus": "DOM and visual reading order"}
+}
